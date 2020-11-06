@@ -32,7 +32,7 @@ const LoginPage = (props) => {
         <div className="LoginPage-container">
             <div className="LoginPage-side">
                 <img
-                    src="https://images.unsplash.com/photo-1592921411716-e5ea119cc724?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                    src="https://images.unsplash.com/photo-1604668257016-55b2b5f828e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80"
                     alt="imgBox"
                 />
             </div>
