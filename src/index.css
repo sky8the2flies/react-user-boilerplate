@@ -16,3 +16,22 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
 }
+
+.sep {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    opacity: 0.5;
+}
+.sep::before,
+.sep::after {
+    content: '';
+    flex: 1;
+    border-bottom: 0.5px solid #607d8b;
+}
+.sep::before {
+    margin-right: 0.25em;
+}
+.sep::after {
+    margin-left: 0.25em;
+}
