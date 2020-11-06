@@ -13,24 +13,32 @@ function getUser() {
     return tokenService.getUserFromToken();
 }
 
-async function signup(user) {
-    const res = await fetch(`${BASE_URL}/signup`, {
+function signup(user) {
+    return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(user),
-    });
-    if (res.ok) return res.json();
-    throw new Error('Email already taken!');
+    })
+        .then((res) => {
+            if (res.ok) return res.json();
+            throw new Error('Email already taken!');
+        })
+        .then(({ token }) => {
+            tokenService.setToken(token);
+        });
 }
 
-async function login(creds) {
-    const res = await fetch(`${BASE_URL}/login`, {
+function login(creds) {
+    return fetch(`${BASE_URL}/login`, {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(creds),
-    });
-    if (res.ok) return res.json();
-    throw new Error('Bad credentials');
+    })
+        .then((res) => {
+            if (res.ok) return res.json();
+            throw new Error('Bad credentials');
+        })
+        .then(({ token }) => tokenService.setToken(token));
 }
 
 function logout() {

@@ -39,12 +39,11 @@ const LoginPage = (props) => {
             <div className="LoginPage-content-container">
                 <div className="LoginPage-form-container">
                     <h2>Login</h2>
-                    <form className="" onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <div className="LoginPage-input-box">
                             <span>Email</span>
                             <input
                                 type="email"
-                                placeholder="Email"
                                 value={form.email}
                                 name="email"
                                 onChange={handleChange}
@@ -54,7 +53,6 @@ const LoginPage = (props) => {
                             <span>Password</span>
                             <input
                                 type="password"
-                                placeholder="Password"
                                 value={form.password}
                                 name="password"
                                 onChange={handleChange}

@@ -1,17 +1,17 @@
-.LoginPage-container {
+.SignupPage-container {
     position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
 }
 
-.LoginPage-side {
+.SignupPage-side {
     position: relative;
     width: 40%;
     height: 100%;
 }
 
-.LoginPage-side:before {
+.SignupPage-side:before {
     content: '';
     position: absolute;
     top: 0;
@@ -23,7 +23,7 @@
     mix-blend-mode: screen;
 }
 
-.LoginPage-side img {
+.SignupPage-side img {
     position: absolute;
     top: 0;
     left: 0;
@@ -32,7 +32,7 @@
     object-fit: cover;
 }
 
-.LoginPage-content-container {
+.SignupPage-content-container {
     display: flex;
     width: 60%;
     height: 100%;
@@ -40,11 +40,11 @@
     align-items: center;
 }
 
-.LoginPage-form-container {
+.SignupPage-form-container {
     width: 50%;
 }
 
-.LoginPage-form-container h2 {
+.SignupPage-form-container h2 {
     color: #607d86;
     font-weight: 600;
     font-size: 1.5em;
@@ -55,11 +55,11 @@
     letter-spacing: 1px;
 }
 
-.LoginPage-input-box {
+.SignupPage-input-box {
     margin-bottom: 20px;
 }
 
-.LoginPage-input-box span {
+.SignupPage-input-box span {
     font-size: 16px;
     margin-bottom: 5px;
     display: inline-block;
@@ -68,12 +68,12 @@
     letter-spacing: 1px;
 }
 
-.LoginPage-input-box input {
+.SignupPage-input-box input {
     width: 100%;
     padding: 10px 20px;
     outline: none;
     font-weight: 400;
-    border: 1px solid #6592a8;
+    border: 1px solid #607d8b;
     font-size: 16px;
     letter-spacing: 1px;
     color: #607d8b;
@@ -81,11 +81,7 @@
     border-radius: 10px;
 }
 
-.LoginPage-input-box input:focus {
-    border: 2px solid #6592a8;
-}
-
-.LoginPage-input-box input[type='submit'] {
+.SignupPage-input-box input[type='submit'] {
     border: 2px solid #ff4584;
     color: #ff4584;
     outline: none;
@@ -94,27 +90,27 @@
     transition: 250ms ease-in-out;
 }
 
-.LoginPage-input-box input[type='submit']:hover {
+.SignupPage-input-box input[type='submit']:hover {
     background: #f53677;
     color: white;
 }
 
-.LoginPage-input-box p {
+.SignupPage-input-box p {
     color: #607d8b;
 }
 
-.LoginPage-link {
+.SignupPage-link {
     color: #ff4584;
     text-decoration: none;
     font-weight: 600;
     transition: 250ms ease-in-out;
 }
 
-.LoginPage-link:hover {
+.SignupPage-link:hover {
     color: #af325c;
 }
 
-.LoginPage-social-container {
+.SignupPage-social-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,7 +118,7 @@
     margin-bottom: 10px;
 }
 
-.LoginPage-link-btn {
+.SignupPage-link-btn {
     margin: 10px;
     padding: 8px;
     text-align: center;
@@ -134,27 +130,27 @@
     font-weight: 600;
     transition: 250ms ease;
 }
-.LoginPage-link-btn:hover {
+.SignupPage-link-btn:hover {
     background-color: #dc3545;
     color: white;
 }
 
 @media (max-width: 768px) {
-    .LoginPage-side {
+    .SignupPage-side {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
     }
-    .LoginPage-content-container {
+    .SignupPage-content-container {
         display: flex;
         justify-content: center;
         width: 100%;
         height: 100%;
         z-index: 1;
     }
-    .LoginPage-form-container {
+    .SignupPage-form-container {
         width: 100%;
         margin: 50px;
         padding: 40px;

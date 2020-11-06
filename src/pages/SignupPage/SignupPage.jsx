@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import './SignupPage.css';
+
 import userService from '../../services/userService';
 
 const SignupPage = (props) => {
@@ -27,56 +29,79 @@ const SignupPage = (props) => {
         }
     };
 
-    function isFormInvalid() {
-        return !(
-            form.username &&
-            form.email &&
-            form.password === form.passwordConf
-        );
-    }
-
     return (
-        <div className="container SignupPage-container">
-            <h1>Sign up</h1>
-            <form className="SignupPage-form" onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={form.username}
-                    name="username"
-                    onChange={handleChange}
+        <div className="SignupPage-container">
+            <div className="SignupPage-side">
+                <img
+                    src="https://images.unsplash.com/photo-1604668257016-55b2b5f828e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80"
+                    alt="imgBox"
                 />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={form.email}
-                    name="email"
-                    onChange={handleChange}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={form.password}
-                    name="password"
-                    onChange={handleChange}
-                />
-                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    value={form.passwordConf}
-                    name="passwordConf"
-                    onChange={handleChange}
-                />
-                <button disabled={isFormInvalid()}>Sign Up</button>
-                <Link className="btn reset-link" to="/">
-                    Cancel
-                </Link>
-            </form>
-            <div>
-                <p>
-                    Already have an account?{' '}
-                    <Link to="/accounts/login">Login</Link>
-                </p>
+            </div>
+            <div className="SignupPage-content-container">
+                <div className="SignupPage-form-container">
+                    <h2>Sign up</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="SignupPage-input-box">
+                            <span>Username</span>
+                            <input
+                                type="text"
+                                value={form.username}
+                                name="username"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="SignupPage-input-box">
+                            <span>Email</span>
+                            <input
+                                type="email"
+                                value={form.email}
+                                name="email"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="SignupPage-input-box">
+                            <span>Password</span>
+                            <input
+                                type="password"
+                                value={form.password}
+                                name="password"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="SignupPage-input-box">
+                            <span>Confirm Password</span>
+                            <input
+                                type="password"
+                                value={form.passwordConf}
+                                name="passwordConf"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="SignupPage-input-box">
+                            <input type="submit" value="Sign Up" />
+                        </div>
+                    </form>
+                    <div className="sep">OR</div>
+                    <div className="SignupPage-social-container">
+                        <Link
+                            className="SignupPage-link-btn"
+                            to="/accounts/signup"
+                        >
+                            Sign Up with Google
+                        </Link>
+                    </div>
+                    <div className="SignupPage-input-box">
+                        <p>
+                            Already have an account?{' '}
+                            <Link
+                                className="SignupPage-link"
+                                to="/accounts/login"
+                            >
+                                Login
+                            </Link>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );
