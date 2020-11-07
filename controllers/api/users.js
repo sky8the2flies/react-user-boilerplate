@@ -2,6 +2,7 @@ const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET;
+const DEFAULT_PERMISSIONS = ['password_update', 'username_update', 'profile_*'];
 
 module.exports = {
     signup,
@@ -10,6 +11,7 @@ module.exports = {
 
 async function signup(req, res) {
     const user = new User(req.body);
+    user.permissions = DEFAULT_PERMISSIONS;
     try {
         await user.save();
         const token = createJWT(user);
