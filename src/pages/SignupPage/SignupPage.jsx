@@ -5,6 +5,8 @@ import './SignupPage.css';
 
 import userService from '../../services/userService';
 
+import Error from '../../modals/Error/Error';
+
 const SignupPage = (props) => {
     const [form, setForm] = useState({
         username: '',
@@ -12,6 +14,7 @@ const SignupPage = (props) => {
         password: '',
         passwordConf: '',
     });
+    const [err, setError] = useState(false);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,11 +27,9 @@ const SignupPage = (props) => {
             props.handleLoadUser();
             props.history.push('/');
         } catch (err) {
-            //TODO THROW ERR
-            console.log(err);
+            setError(true);
         }
     };
-
     return (
         <div className="SignupPage-container">
             <div className="SignupPage-side">
@@ -39,6 +40,18 @@ const SignupPage = (props) => {
             </div>
             <div className="SignupPage-content-container">
                 <div className="SignupPage-form-container">
+                    {err ? (
+                        <Error
+                            floating={false}
+                            bgColor={'white'}
+                            color={'red'}
+                            closeErr={() => setError(false)}
+                        >
+                            <h1>Email already exists</h1>
+                        </Error>
+                    ) : (
+                        <></>
+                    )}
                     <h2>Sign up</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="SignupPage-input-box">

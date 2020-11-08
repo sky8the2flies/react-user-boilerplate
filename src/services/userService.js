@@ -21,7 +21,7 @@ function signup(user) {
     })
         .then((res) => {
             if (res.ok) return res.json();
-            throw new Error('Email already taken!');
+            throw new Error('Username or Email already taken!');
         })
         .then(({ token }) => {
             tokenService.setToken(token);
@@ -36,7 +36,7 @@ function login(creds) {
     })
         .then((res) => {
             if (res.ok) return res.json();
-            throw new Error('Bad credentials');
+            throw new Error('Invalid email or password!');
         })
         .then(({ token }) => tokenService.setToken(token));
 }

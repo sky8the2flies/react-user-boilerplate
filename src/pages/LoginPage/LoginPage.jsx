@@ -5,12 +5,14 @@ import './LoginPage.css';
 
 import userService from '../../services/userService';
 
+import Error from '../../modals/Error/Error';
+
 const LoginPage = (props) => {
     const [form, setForm] = useState({
         email: '',
         password: '',
-        err: null,
     });
+    const [err, setError] = useState(false);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,8 +25,7 @@ const LoginPage = (props) => {
             props.handleLoadUser();
             props.history.push('/');
         } catch (err) {
-            //TODO THROW ERR
-            console.log(err);
+            setError(true);
         }
     };
 
@@ -38,6 +39,18 @@ const LoginPage = (props) => {
             </div>
             <div className="LoginPage-content-container">
                 <div className="LoginPage-form-container">
+                    {err ? (
+                        <Error
+                            floating={false}
+                            bgColor={'white'}
+                            color={'red'}
+                            closeErr={() => setError(false)}
+                        >
+                            <h1>Username or Password incorrect</h1>
+                        </Error>
+                    ) : (
+                        <></>
+                    )}
                     <h2>Login</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="LoginPage-input-box">

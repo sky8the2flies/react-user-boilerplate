@@ -17,8 +17,6 @@ async function signup(req, res) {
         const token = createJWT(user);
         return res.status(201).json({ token });
     } catch (err) {
-        // Duplicate email?
-        console.log(err);
         return res.status(400).json(err);
     }
 }
@@ -36,7 +34,6 @@ async function login(req, res) {
             }
         });
     } catch (err) {
-        console.log(err);
         return res.status(400).json(err);
     }
 }
