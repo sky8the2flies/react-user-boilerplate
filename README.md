@@ -16,7 +16,8 @@ The features of this boilerplate include:
 ### Get Started
 
 To use this boilerplate simply run the following command:
-`git clone https://github.com/sky8the2flies/react-user-boilerplate`
+
+-   `git clone https://github.com/sky8the2flies/react-user-boilerplate`
 
 ### Ice Box
 
