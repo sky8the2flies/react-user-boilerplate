@@ -29,7 +29,7 @@ The ice box features listed are going to be implemented as soon as possible.
 
 ### Third party
 
-As I am still in the beggining stages of this project and have thought of most of the ideas that I will be including in the project please feel free to make pull requests and update certain parts that can be improved or just brand new ideas! I will be reviewing all pull requests, yay!
+As I am still in the beginning stages of this project and have thought of most of the ideas that I will be including in the project please feel free to make pull requests and update certain parts that can be improved or just brand new ideas! I will be reviewing all pull requests, yay!
 
 ### Author
 
