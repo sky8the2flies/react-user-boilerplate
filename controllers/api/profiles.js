@@ -7,9 +7,9 @@ module.exports = {
 };
 
 async function getProfile(req, res) {
-    const user = req.user;
+    const user = req.body;
     try {
-        const profile = await Profile.find({ user: user._id });
+        const profile = await Profile.findOne({ user: user._id });
         res.status(200).json(profile);
     } catch (err) {
         res.status(400).json({ err: 'Profile not found.' });
@@ -32,7 +32,7 @@ async function updateProfile(req, res) {
             req.params.id,
             req.body
         );
-        res.status(204).json(profile);
+        res.status(201).json(profile);
     } catch (err) {
         res.status(400).json({ err: 'Profile not found, not updated.' });
     }

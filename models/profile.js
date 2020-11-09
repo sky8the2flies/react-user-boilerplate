@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const profileSchema = new mongoose.Schema(
     {
-        firstName: String,
-        lastName: String,
-        profilePic: String,
+        image: {
+            type: String,
+            default: 'https://i.imgur.com/dOAIeiR.png',
+        },
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     },
     {

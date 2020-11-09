@@ -1,4 +1,5 @@
 const User = require('../../models/user');
+const Profile = require('../../models/profile');
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -14,6 +15,8 @@ async function signup(req, res) {
     user.permissions = DEFAULT_PERMISSIONS;
     try {
         await user.save();
+        const newProfile = { user: user._id };
+        await Profile.create(newProfile);
         const token = createJWT(user);
         return res.status(201).json({ token });
     } catch (err) {
