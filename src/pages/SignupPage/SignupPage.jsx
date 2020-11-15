@@ -15,7 +15,7 @@ const SignupPage = (props) => {
         password: '',
         passwordConf: '',
     });
-    const [err, setError] = useState(false);
+    const [err, setError] = useState({ active: false, message: '' });
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,12 +28,21 @@ const SignupPage = (props) => {
             props.handleLoadUser();
             props.history.push('/');
         } catch (err) {
-            setError(true);
+            setError({ active: true, message: 'Email already exists!' });
         }
     };
 
-    const responseGoogle = (response) => {
-        console.log(response);
+    const responseGoogle = async (response) => {
+        try {
+            await userService.googleLogin(response);
+            props.handleLoadUser();
+            props.history.push('/');
+        } catch (err) {
+            setError({
+                active: true,
+                message: 'Something went wrong! Try again later.',
+            });
+        }
     };
 
     return (
@@ -53,7 +62,7 @@ const SignupPage = (props) => {
                             color={'red'}
                             closeErr={() => setError(false)}
                         >
-                            <h1>Email already exists</h1>
+                            <h1>{err.message}</h1>
                         </Error>
                     ) : (
                         <></>

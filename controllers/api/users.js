@@ -44,15 +44,12 @@ async function login(req, res) {
 
 /*-- SOCIAL LOGIN --*/
 async function googleLogin(req, res) {
-    console.log(req.body);
     try {
-        let user = await User.findOne({ googleId: req.body.googleId });
+        let user = await User.findOne({ email: req.body.profileObj.email });
         if (!user) {
             const newUser = {
                 username: req.body.profileObj.name,
                 email: req.body.profileObj.email,
-                googleId: req.body.googleId,
-                password: process.env.DEFAULT_PASSWORD,
             };
             user = new User(newUser);
             await user.save();
@@ -60,9 +57,9 @@ async function googleLogin(req, res) {
             await Profile.create(newProfile);
         }
         const token = createJWT(user);
-        return res.status(200).json(token);
+        return res.status(200).json({ token });
     } catch (err) {
-        return res.staus(400).json(err);
+        return res.status(400).json(err);
     }
 }
 

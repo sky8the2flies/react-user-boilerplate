@@ -13,7 +13,7 @@ const LoginPage = (props) => {
         email: '',
         password: '',
     });
-    const [err, setError] = useState(false);
+    const [err, setError] = useState({ active: false, message: '' });
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,12 +26,24 @@ const LoginPage = (props) => {
             props.handleLoadUser();
             props.history.push('/');
         } catch (err) {
-            setError(true);
+            setError({
+                active: true,
+                message: 'Username or Password incorrect',
+            });
         }
     };
 
-    const responseGoogle = (response) => {
-        console.log(response);
+    const responseGoogle = async (response) => {
+        try {
+            await userService.googleLogin(response);
+            props.handleLoadUser();
+            props.history.push('/');
+        } catch (err) {
+            setError({
+                active: true,
+                message: 'Something went wrong! Try again later.',
+            });
+        }
     };
 
     return (
@@ -51,7 +63,7 @@ const LoginPage = (props) => {
                             color={'red'}
                             closeErr={() => setError(false)}
                         >
-                            <h1>Username or Password incorrect</h1>
+                            <h1>{err.message}</h1>
                         </Error>
                     ) : (
                         <></>
