@@ -10,19 +10,19 @@ async function getProfile(req, res) {
     const user = req.body;
     try {
         const profile = await Profile.findOne({ user: user._id });
-        res.status(200).json(profile);
+        return res.status(200).json(profile);
     } catch (err) {
-        res.status(400).json({ err: 'Profile not found.' });
+        return res.status(400).json({ err: 'Profile not found.' });
     }
 }
 
 async function getOtherProfile(req, res) {
-    const requestUser = req.user;
+    // const requestUser = req.user;
     try {
         const profile = await Profile.findById(req.params.id);
-        res.status(200).json(profile);
+        return res.status(200).json(profile);
     } catch (err) {
-        res.status(400).json({ err: 'Profile not found.' });
+        return res.status(400).json({ err: 'Profile not found.' });
     }
 }
 
@@ -32,8 +32,8 @@ async function updateProfile(req, res) {
             req.params.id,
             req.body
         );
-        res.status(201).json(profile);
+        return res.status(201).json(profile);
     } catch (err) {
-        res.status(400).json({ err: 'Profile not found, not updated.' });
+        return res.status(400).json({ err: 'Profile not found, not updated.' });
     }
 }

@@ -59,6 +59,19 @@ function App() {
                     render={({ history }) => (
                         <ProfilePage
                             user={user}
+                            other={false}
+                            profile={profile}
+                            history={history}
+                            handleLoadUser={handleLoadUser}
+                        />
+                    )}
+                />
+                <Route
+                    path="/accounts/profile/:id"
+                    render={({ history }) => (
+                        <ProfilePage
+                            user={user}
+                            other={true}
                             profile={profile}
                             history={history}
                             handleLoadUser={handleLoadUser}

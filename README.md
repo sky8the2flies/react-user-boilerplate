@@ -23,9 +23,9 @@ To use this boilerplate simply run the following command:
 
 The ice box features listed are going to be implemented as soon as possible.
 
--   [] Forgot password button
--   [] Change password button
--   [] Other user profile viewing
+-   [ ] Forgot password button
+-   [ ] Change password button
+-   [x] Other user profile viewing
 
 ### Third party
 
