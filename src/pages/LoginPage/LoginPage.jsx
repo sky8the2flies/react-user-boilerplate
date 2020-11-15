@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 import './LoginPage.css';
 
@@ -27,6 +28,10 @@ const LoginPage = (props) => {
         } catch (err) {
             setError(true);
         }
+    };
+
+    const responseGoogle = (response) => {
+        console.log(response);
     };
 
     return (
@@ -77,12 +82,14 @@ const LoginPage = (props) => {
                     </form>
                     <div className="sep">OR</div>
                     <div className="LoginPage-social-container">
-                        <Link
+                        <GoogleLogin
                             className="LoginPage-link-btn"
-                            to="/accounts/login"
-                        >
-                            Log in with Google
-                        </Link>
+                            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                            buttonText="Log in with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
                     </div>
                     <div className="LoginPage-input-box">
                         <p>

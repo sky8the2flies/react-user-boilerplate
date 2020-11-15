@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 import './SignupPage.css';
 
@@ -30,6 +31,11 @@ const SignupPage = (props) => {
             setError(true);
         }
     };
+
+    const responseGoogle = (response) => {
+        console.log(response);
+    };
+
     return (
         <div className="SignupPage-container">
             <div className="SignupPage-side">
@@ -96,12 +102,14 @@ const SignupPage = (props) => {
                     </form>
                     <div className="sep">OR</div>
                     <div className="SignupPage-social-container">
-                        <Link
-                            className="SignupPage-link-btn"
-                            to="/accounts/signup"
-                        >
-                            Sign Up with Google
-                        </Link>
+                        <GoogleLogin
+                            className="LoginPage-link-btn"
+                            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                            buttonText="Sign up with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
                     </div>
                     <div className="SignupPage-input-box">
                         <p>
