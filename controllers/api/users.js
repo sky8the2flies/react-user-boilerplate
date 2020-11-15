@@ -8,6 +8,7 @@ const DEFAULT_PERMISSIONS = ['password_update', 'username_update', 'profile_*'];
 module.exports = {
     signup,
     login,
+    googleLogin,
 };
 
 async function signup(req, res) {
@@ -38,6 +39,30 @@ async function login(req, res) {
         });
     } catch (err) {
         return res.status(400).json(err);
+    }
+}
+
+/*-- SOCIAL LOGIN --*/
+async function googleLogin(req, res) {
+    console.log(req.body);
+    try {
+        let user = await User.findOne({ googleId: req.body.googleId });
+        if (!user) {
+            const newUser = {
+                username: req.body.profileObj.name,
+                email: req.body.profileObj.email,
+                googleId: req.body.googleId,
+                password: process.env.DEFAULT_PASSWORD,
+            };
+            user = new User(newUser);
+            await user.save();
+            const newProfile = { user: user._id };
+            await Profile.create(newProfile);
+        }
+        const token = createJWT(user);
+        return res.status(200).json(token);
+    } catch (err) {
+        return res.staus(400).json(err);
     }
 }
 
