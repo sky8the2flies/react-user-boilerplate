@@ -56,7 +56,7 @@ const LoginPage = (props) => {
             </div>
             <div className="LoginPage-content-container">
                 <div className="LoginPage-form-container">
-                    {err ? (
+                    {err.active ? (
                         <Error
                             floating={false}
                             bgColor={'white'}
