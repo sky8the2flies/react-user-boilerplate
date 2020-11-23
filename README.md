@@ -15,21 +15,53 @@ The features of this boilerplate include:
 
 ### Get Started
 
-To use this boilerplate simply run the following command:
+To use this boilerplate simply run the following command, then follow the next steps:
 
 -   `git clone https://github.com/sky8the2flies/react-user-boilerplate`
+
+#### Configuration
+
+##### .env file requirements.
+
+-   DATABASE_URL
+    -   Database url used for MongoDB.
+-   JWT_SECRET
+    -   Sectret token used to sign user information from backend to frontend.
+-   REACT_APP_GOOGLE_CLIENT_ID, GOOGLE_SECRET, GOOGLE_CALLBACK
+    -   Used for Google Auth.
+
+### Database
+
+For the database, this boilerplate uses Mongoose. For the mongoose Scheme there are user schema and profile schema.
+
+##### Database - User Schema
+
+The following is what the User Schema stores:
+
+-   Username: Used as a required display name for the client.
+-   Email: Used as the required login for the client.
+-   Permissions: Optional permissions to use / add / remove.
+-   Password: Hashed by bcrypt.
+
+##### Database - Profile Schema
+
+The profile is created once the client signs up usign token auth OR google auth.
+The following is what the Profile Schema stores:
+
+-   Image: Default to gender neutral avatar.
+-   User: Reference to user.
 
 ### Ice Box
 
 The ice box features listed are going to be implemented as soon as possible.
 
+-   [x] Other user profile viewing
 -   [ ] Forgot password button
 -   [ ] Change password button
--   [x] Other user profile viewing
 
 ### Third party
 
-As I am still in the beginning stages of this project and have thought of most of the ideas that I will be including in the project please feel free to make pull requests and update certain parts that can be improved or just brand new ideas! I will be reviewing all pull requests, yay!
+As of now I am completed with what I wanted to be done for this boilerplate, however I am still taking suggestions. Please feel free to make pull requests and update certain parts that can be improved or just brand new ideas! I will be reviewing all pull requests, yay!
 
 ### Author
 
