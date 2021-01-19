@@ -26,7 +26,7 @@ To use this boilerplate simply run the following command, then follow the next s
 -   DATABASE_URL
     -   Database url used for MongoDB.
 -   JWT_SECRET
-    -   Sectret token used to sign user information from backend to frontend.
+    -   Secret token used to sign user information from backend to frontend.
 -   REACT_APP_GOOGLE_CLIENT_ID, GOOGLE_SECRET, GOOGLE_CALLBACK
     -   Used for Google Auth.
 
