@@ -18,6 +18,7 @@ The features of this boilerplate include:
 To use this boilerplate simply run the following command, then follow the next steps:
 
 -   `git clone https://github.com/sky8the2flies/react-user-boilerplate`
+-   `npm i`
 
 #### Configuration
 
